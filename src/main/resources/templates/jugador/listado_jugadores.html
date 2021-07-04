@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html th:replace="~{fragmentos/plantilla::pagina(~{this::title}, ~{this::body})}" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Listado de jugadores</title>
+</head>
+
+<body>
+<h1 class="center-text">Listado de jugadores</h1>
+
+<form th:action="@{/jugador}" method="post" class="form-horizontal" id="buscar-form">
+    <div class="row">
+        <div class="col-10 form-group">
+            <div class="control-group row" id="nombre">
+                <label class="col-2 control-label">Nombre</label>
+                <input class="col-10 form-control" th:name="nombreJugador" size="30" maxlength="80"/>
+            </div>
+            <div class="control-group row" id="localidad">
+                <label class="col-2 control-label">Región</label>
+                <input class="col-10 form-control" th:name="nombreRegion" size="30" maxlength="80"/>
+            </div>
+        </div>
+
+
+        <div class="col-2 form-group">
+            <button type="submit" class="btn btn-lg btn-block btn-primary">Buscar</button>
+        </div>
+    </div>
+</form>
+
+
+<table id="jugadores" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Región</th>
+        <th/>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="jugador : ${jugadores}">
+        <td><a th:href="@{/jugador/__${jugador.id}__}" th:text="${jugador.id}"></a></td>
+        <td th:text="${jugador.nombre}"/>
+        <td th:text="${jugador.region.nombre}"/>
+        <td>
+            <a class="btn btn-primary" th:href="@{/jugador/__${jugador.id}__}">Editar</a>
+            <a class="btn btn-primary" th:href="@{/jugador/__${jugador.id}__/eliminar}">Borrar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+
+<a class="col-2 btn btn-lg btn-block btn-primary" th:href="@{/jugador/nuevo}">Nuevo jugador</a>
+</body>
+</html>
