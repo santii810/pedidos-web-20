@@ -16,12 +16,10 @@ public class Rol {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
+    private String nombre;
     @OneToMany
     private List<Campeon> campeones;
-
-
-
-
 
 
 }

@@ -1,8 +1,6 @@
 package es.uvigo.esei.mei.pedidos.controladores;
 
-import es.uvigo.esei.mei.pedidos.entidades.Jugador;
 import es.uvigo.esei.mei.pedidos.entidades.Region;
-import es.uvigo.esei.mei.pedidos.servicios.JugadorService;
 import es.uvigo.esei.mei.pedidos.servicios.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,7 +50,7 @@ public class RegionController {
 
     @PostMapping
     public String actualizarListarRegiones(@RequestParam(required = false) String nombreRegion,
-                                            Model modelo) {
+                                           Model modelo) {
         List<Region> regiones;
         if ((nombreRegion != null) && !nombreRegion.isEmpty()) {
             regiones = regionService.buscarPorNombre(nombreRegion);

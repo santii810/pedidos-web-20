@@ -2,13 +2,13 @@
 <html th:replace="~{fragmentos/plantilla::pagina(~{this::title}, ~{this::body})}" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Editar/crear region</title>
+<title>Editar/crear rol</title>
 </head>
 
 <body>
-	<h1 class="center-text" th:text="${esNuevo} ? 'Crear region' : 'Editar region'"></h1>
+	<h1 class="center-text" th:text="${esNuevo} ? 'Crear rol' : 'Editar rol'"></h1>
 
-	<form th:object="${region}" class="form-horizontal" id="region-form" method="post">
+	<form th:object="${rol}" class="form-horizontal" id="rol-form" method="post">
 		<div class="form-group has-feedback">
 
 			<div class="form-group">
@@ -19,7 +19,7 @@
 				<button class="btn btn-lg btn-block btn-primary col-2" th:text="${esNuevo} ? 'Crear' : 'Guardar'" type="submit">
 					Guardar</button>
 
-				<a class="btn btn-lg btn-block btn-secondary col-2" th:href="@{/region/}">Cancelar</a>
+				<a class="btn btn-lg btn-block btn-secondary col-2" th:href="@{/rol/}">Cancelar</a>
 			</div>
 		</div>
 	</form>

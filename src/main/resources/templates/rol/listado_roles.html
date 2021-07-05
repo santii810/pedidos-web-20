@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html th:replace="~{fragmentos/plantilla::pagina(~{this::title}, ~{this::body})}" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Listado de roles</title>
+</head>
+
+<body>
+<h1 class="center-text">Listado de roles</h1>
+
+<form th:action="@{/rol}" method="post" class="form-horizontal" id="buscar-form">
+    <div class="row">
+        <div class="col-10 form-group">
+            <div class="control-group row" id="nombre">
+                <label class="col-2 control-label">Nombre</label>
+                <input class="col-10 form-control" th:name="nombreRol" size="30" maxlength="80"/>
+            </div>
+        </div>
+
+        <div class="col-2 form-group">
+            <button type="submit" class="btn btn-lg btn-block btn-primary">Buscar</button>
+        </div>
+    </div>
+</form>
+
+
+<table id="roles" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th/>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="rol : ${roles}">
+        <td><a th:href="@{/rol/__${rol.id}__}" th:text="${rol.id}"></a></td>
+        <td th:text="${rol.nombre}"/>
+        <td>
+            <a class="btn btn-primary" th:href="@{/rol/__${rol.id}__}">Editar</a>
+            <a class="btn btn-primary" th:href="@{/rol/__${rol.id}__/eliminar}">Borrar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+
+<a class="col-2 btn btn-lg btn-block btn-primary" th:href="@{/rol/nuevo}">Nuevo rol</a>
+</body>
+</html>
