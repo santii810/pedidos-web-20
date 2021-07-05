@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html th:replace="~{fragmentos/plantilla::pagina(~{this::title}, ~{this::body})}" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Listado de regiones</title>
+</head>
+
+<body>
+<h1 class="center-text">Listado de regiones</h1>
+
+<form th:action="@{/region}" method="post" class="form-horizontal" id="buscar-form">
+    <div class="row">
+        <div class="col-10 form-group">
+            <div class="control-group row" id="nombre">
+                <label class="col-2 control-label">Nombre</label>
+                <input class="col-10 form-control" th:name="nombreRegion" size="30" maxlength="80"/>
+            </div>
+        </div>
+
+        <div class="col-2 form-group">
+            <button type="submit" class="btn btn-lg btn-block btn-primary">Buscar</button>
+        </div>
+    </div>
+</form>
+
+
+<table id="regiones" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th/>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="region : ${regiones}">
+        <td><a th:href="@{/region/__${region.id}__}" th:text="${region.id}"></a></td>
+        <td th:text="${region.nombre}"/>
+        <td>
+            <a class="btn btn-primary" th:href="@{/region/__${region.id}__}">Editar</a>
+            <a class="btn btn-primary" th:href="@{/region/__${region.id}__/eliminar}">Borrar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+
+<a class="col-2 btn btn-lg btn-block btn-primary" th:href="@{/region/nuevo}">Nuevo region</a>
+</body>
+</html>

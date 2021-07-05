@@ -11,7 +11,6 @@ public interface RegionService {
 	public Region buscarPorId(Long id);
 	public List<Region> buscarTodos();
 	public List<Region> buscarPorNombre(String patron);
-	public List<Region> buscarPorRegion(String patron);
 
 
 }

@@ -101,7 +101,7 @@ public class JugadorController {
     public String actualizarElemento(@Valid @ModelAttribute Jugador jugador, BindingResult resultado) {
         if (!resultado.hasErrors()) {
             jugadorService.modificar(jugador);
-            return "redirect:/clientes";
+            return "redirect:/jugador";
         } else {
             return null;
         }

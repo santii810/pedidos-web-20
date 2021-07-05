@@ -12,4 +12,6 @@ import java.util.List;
 @Repository
 public interface RegionRepository extends JpaRepository<Region, Long> {
 
+    @Query("SELECT r from Region r where r.nombre like %:name%")
+    List<Region> findByNombre(@Param("name") String patron);
 }

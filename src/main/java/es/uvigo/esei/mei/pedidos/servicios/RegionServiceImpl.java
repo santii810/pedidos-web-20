@@ -14,23 +14,23 @@ public class RegionServiceImpl implements RegionService {
     RegionRepository regionRepository;
 
     @Override
-    public Region crear(Region Region) {
-        return null;
+    public Region crear(Region region) {
+        return regionRepository.save(region);
     }
 
     @Override
-    public Region modificar(Region Region) {
-        return null;
+    public Region modificar(Region region) {
+        return regionRepository.save(region);
     }
 
     @Override
     public void eliminar(Long id) {
-
+        regionRepository.deleteById(id);
     }
 
     @Override
     public Region buscarPorId(Long id) {
-        return null;
+        return regionRepository.findById(id).get();
     }
 
     @Override
@@ -40,11 +40,7 @@ public class RegionServiceImpl implements RegionService {
 
     @Override
     public List<Region> buscarPorNombre(String patron) {
-        return null;
+        return regionRepository.findByNombre(patron);
     }
 
-    @Override
-    public List<Region> buscarPorRegion(String patron) {
-        return null;
-    }
 }

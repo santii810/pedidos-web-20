@@ -13,8 +13,8 @@ import es.uvigo.esei.mei.pedidos.entidades.Region;
 @Repository
 public interface JugadorRepository extends JpaRepository<Jugador, Long> {
 
-
-    List<Jugador> findAllByNombre(String nombre);
+    @Query("SELECT j from Jugador j where j.nombre like %:name%")
+    List<Jugador> findAllByNombre(@Param("name") String nombre);
 
     @Query("SELECT j from Jugador j join j.region r where r.nombre like %:name%")
     List<Jugador> buscarPorRegion(@Param("name") String nombre);
